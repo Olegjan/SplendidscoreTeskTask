@@ -216,7 +216,11 @@ export class GameManager extends BaseScriptComponent {
         this.playSfx(Sfx.Hit);
 
         if (this.lives <= 0) {
+            // Останнє зіткнення — без мигання: далі йде поза очікування,
+            // і блимання поверх неї читалося б як збій, а не як фідбек.
             this.endGame();
+        } else {
+            this.player.startHitFlash();
         }
     }
 

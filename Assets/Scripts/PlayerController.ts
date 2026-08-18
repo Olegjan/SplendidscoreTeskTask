@@ -55,6 +55,10 @@ export class PlayerController extends BaseScriptComponent {
     private idle: boolean = false;
     private idleTimer: number = 0;
 
+    /** Мигання після зіткнення. */
+    private flashing: boolean = false;
+    private flashTimer: number = 0;
+
     private isJumping: boolean = false;
     private isSliding: boolean = false;
     private jumpTimer: number = 0;
@@ -146,6 +150,18 @@ export class PlayerController extends BaseScriptComponent {
     }
 
     /**
+     * Запускає мигання після зіткнення.
+     *
+     * Викликається лише коли життя ще лишились: на останньому зіткненні
+     * гра переходить у Game Over, і блимати там нема кому — персонаж
+     * має спокійно стояти в позі очікування.
+     */
+    startHitFlash() {
+        this.flashing = true;
+        this.flashTimer = 0;
+    }
+
+    /**
      * Зупиняє біг і ставить персонажа в позу очікування.
      * Викликається, коли гра завершилась.
      *
@@ -159,10 +175,12 @@ export class PlayerController extends BaseScriptComponent {
         this.idle = true;
         this.idleTimer = 0;
 
-        // Скидаємо незавершені дії, щоб персонаж не «завис» у стрибку.
+        // Скидаємо незавершені дії, щоб персонаж не «завис» у стрибку
+        // і не лишився невидимим посеред мигання.
         this.isJumping = false;
         this.isSliding = false;
         this.applySlideScale(false);
+        this.stopHitFlash();
 
         this.freezeAnimationAtPose();
     }
@@ -186,6 +204,7 @@ export class PlayerController extends BaseScriptComponent {
         this.targetDirection = 0;
 
         this.applySlideScale(false);
+        this.stopHitFlash();
         this.getSceneObject()
             .getTransform()
             .setLocalPosition(new vec3(LANE_X[this.currentLane], this.baseY, CONFIG.playerZ));
@@ -238,6 +257,8 @@ export class PlayerController extends BaseScriptComponent {
             this.updateIdleBreathing(dt);
             return;
         }
+
+        this.updateHitFlash(dt);
 
         const transform = this.getSceneObject().getTransform();
         const position = transform.getLocalPosition();
@@ -345,6 +366,34 @@ export class PlayerController extends BaseScriptComponent {
             }
         }
         this.applyClipWeights(0);
+    }
+
+    /**
+     * Блимає видимістю персонажа після зіткнення.
+     *
+     * Фаза рахується від накопиченого часу, а не перемикається лічильником
+     * кадрів: так частота мигання однакова і на 30, і на 60 FPS.
+     */
+    private updateHitFlash(dt: number) {
+        if (!this.flashing) {
+            return;
+        }
+
+        this.flashTimer += dt;
+        if (this.flashTimer >= CONFIG.hitFlashDuration) {
+            this.stopHitFlash();
+            return;
+        }
+
+        const phase = Math.floor(this.flashTimer / CONFIG.hitFlashInterval);
+        this.playerVisual.enabled = phase % 2 === 0;
+    }
+
+    /** Гасить мигання й обовʼязково повертає персонажа видимим. */
+    private stopHitFlash() {
+        this.flashing = false;
+        this.flashTimer = 0;
+        this.playerVisual.enabled = true;
     }
 
     /** Ледь помітне вертикальне «дихання», щоб стійка не виглядала мертвою. */
