@@ -351,7 +351,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: -15.000000, y: -11.900000, z: -300.000000}
+    Position: {x: -18.500000, y: -11.900000, z: -300.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 700.000000}
     HasSegmentScaleCompensation: false
@@ -414,7 +414,7 @@
   SizeToFit: false
   FontSize: 48.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  PreferredStyle: Regular
+  PreferredStyle: Bold
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -433,7 +433,7 @@
     TextureStretch: FitWidth
   BlendMode: PremultipliedAlpha
   Outline: !<OutlineSettings>
-    Enabled: false
+    Enabled: true
     Fill: !<TextFill>
       Mode: Solid
       Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
@@ -442,7 +442,7 @@
       TileCount: 5.000000
       TileZone: Rect
       TextureStretch: FitWidth
-    Size: 0.250000
+    Size: 0.150000
   Dropshadow: !<DropshadowSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -741,7 +741,7 @@
   SizeToFit: false
   FontSize: 20.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  PreferredStyle: Regular
+  PreferredStyle: Bold Italic
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -760,7 +760,7 @@
     TextureStretch: FitWidth
   BlendMode: PremultipliedAlpha
   Outline: !<OutlineSettings>
-    Enabled: false
+    Enabled: true
     Fill: !<TextFill>
       Mode: Solid
       Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
@@ -769,7 +769,7 @@
       TileCount: 5.000000
       TileZone: Rect
       TextureStretch: FitWidth
-    Size: 0.250000
+    Size: 0.150000
   Dropshadow: !<DropshadowSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -969,7 +969,7 @@
   SizeToFit: false
   FontSize: 44.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  PreferredStyle: Regular
+  PreferredStyle: Bold
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -988,7 +988,7 @@
     TextureStretch: FitWidth
   BlendMode: PremultipliedAlpha
   Outline: !<OutlineSettings>
-    Enabled: false
+    Enabled: true
     Fill: !<TextFill>
       Mode: Solid
       Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
@@ -997,7 +997,7 @@
       TileCount: 5.000000
       TileZone: Rect
       TextureStretch: FitWidth
-    Size: 0.250000
+    Size: 0.150000
   Dropshadow: !<DropshadowSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -1270,7 +1270,7 @@
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: -12.000000, z: -300.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 32.000000, y: 1.000000, z: 700.000000}
+    Scale: {x: 40.000000, y: 1.000000, z: 700.000000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -1362,7 +1362,7 @@
   SizeToFit: false
   FontSize: 32.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  PreferredStyle: Regular
+  PreferredStyle: Bold
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -1381,7 +1381,7 @@
     TextureStretch: FitWidth
   BlendMode: PremultipliedAlpha
   Outline: !<OutlineSettings>
-    Enabled: false
+    Enabled: true
     Fill: !<TextFill>
       Mode: Solid
       Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
@@ -1390,7 +1390,7 @@
       TileCount: 5.000000
       TileZone: Rect
       TextureStretch: FitWidth
-    Size: 0.250000
+    Size: 0.150000
   Dropshadow: !<DropshadowSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -1483,7 +1483,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 8.100000, z: 0.000000}
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 180.000000, z: 0.000000}
     Scale: {x: 0.150000, y: 0.150000, z: 0.150000}
     HasSegmentScaleCompensation: false
@@ -1806,7 +1806,7 @@
   SizeToFit: false
   FontSize: 34.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  PreferredStyle: Regular
+  PreferredStyle: Bold
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -1825,7 +1825,7 @@
     TextureStretch: FitWidth
   BlendMode: PremultipliedAlpha
   Outline: !<OutlineSettings>
-    Enabled: false
+    Enabled: true
     Fill: !<TextFill>
       Mode: Solid
       Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
@@ -1834,7 +1834,7 @@
       TileCount: 5.000000
       TileZone: Rect
       TextureStretch: FitWidth
-    Size: 0.250000
+    Size: 0.150000
   Dropshadow: !<DropshadowSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -1890,7 +1890,7 @@
   SizeToFit: false
   FontSize: 36.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  PreferredStyle: Regular
+  PreferredStyle: Bold
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -1909,7 +1909,7 @@
     TextureStretch: FitWidth
   BlendMode: PremultipliedAlpha
   Outline: !<OutlineSettings>
-    Enabled: false
+    Enabled: true
     Fill: !<TextFill>
       Mode: Solid
       Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
@@ -1918,7 +1918,7 @@
       TileCount: 5.000000
       TileZone: Rect
       TextureStretch: FitWidth
-    Size: 0.250000
+    Size: 0.150000
   Dropshadow: !<DropshadowSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -2031,7 +2031,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 15.000000, y: -11.900000, z: -300.000000}
+    Position: {x: 18.500000, y: -11.900000, z: -300.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 700.000000}
     HasSegmentScaleCompensation: false
@@ -2141,7 +2141,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  PreferredStyle: Regular
+  PreferredStyle: Bold
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -2160,7 +2160,7 @@
     TextureStretch: FitWidth
   BlendMode: PremultipliedAlpha
   Outline: !<OutlineSettings>
-    Enabled: false
+    Enabled: true
     Fill: !<TextFill>
       Mode: Solid
       Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
@@ -2169,7 +2169,7 @@
       TileCount: 5.000000
       TileZone: Rect
       TextureStretch: FitWidth
-    Size: 0.250000
+    Size: 0.150000
   Dropshadow: !<DropshadowSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -2225,7 +2225,7 @@
   SizeToFit: false
   FontSize: 52.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  PreferredStyle: Regular
+  PreferredStyle: Bold
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -2244,7 +2244,7 @@
     TextureStretch: FitWidth
   BlendMode: PremultipliedAlpha
   Outline: !<OutlineSettings>
-    Enabled: false
+    Enabled: true
     Fill: !<TextFill>
       Mode: Solid
       Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
@@ -2253,7 +2253,7 @@
       TileCount: 5.000000
       TileZone: Rect
       TextureStretch: FitWidth
-    Size: 0.250000
+    Size: 0.150000
   Dropshadow: !<DropshadowSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -2403,7 +2403,7 @@
   SizeToFit: false
   FontSize: 28.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  PreferredStyle: Regular
+  PreferredStyle: Bold
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -2422,7 +2422,7 @@
     TextureStretch: FitWidth
   BlendMode: PremultipliedAlpha
   Outline: !<OutlineSettings>
-    Enabled: false
+    Enabled: true
     Fill: !<TextFill>
       Mode: Solid
       Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
@@ -2431,7 +2431,7 @@
       TileCount: 5.000000
       TileZone: Rect
       TextureStretch: FitWidth
-    Size: 0.250000
+    Size: 0.150000
   Dropshadow: !<DropshadowSettings>
     Enabled: false
     Fill: !<TextFill>

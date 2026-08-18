@@ -49,6 +49,11 @@ export class PlayerController extends BaseScriptComponent {
     private currentLane: number = 1;
     private baseY: number = 0;
     private baseScale: vec3 = vec3.one();
+    private baseVisualPos: vec3 = vec3.zero();
+
+    /** У режимі очікування персонаж стоїть: біг зупинено, працює лише «дихання». */
+    private idle: boolean = false;
+    private idleTimer: number = 0;
 
     private isJumping: boolean = false;
     private isSliding: boolean = false;
@@ -63,6 +68,7 @@ export class PlayerController extends BaseScriptComponent {
         const transform = this.getSceneObject().getTransform();
         this.baseY = transform.getLocalPosition().y;
         this.baseScale = this.playerVisual.getTransform().getLocalScale();
+        this.baseVisualPos = this.playerVisual.getTransform().getLocalPosition();
 
         this.setupAnimation();
         this.createEvent('UpdateEvent').bind(() => this.onUpdate());
@@ -139,6 +145,36 @@ export class PlayerController extends BaseScriptComponent {
         return true;
     }
 
+    /**
+     * Зупиняє біг і ставить персонажа в позу очікування.
+     * Викликається, коли гра завершилась.
+     *
+     * Готового Idle-кліпа для цього рига немає, а просто зупинити всі
+     * кліпи не можна: з нульовими вагами риг падає в bind-позу, тобто
+     * в T-позу. Тому беремо кадр наявної анімації, лишаємо його як
+     * статичну стійку і додаємо ледь помітне «дихання» — без нього
+     * персонаж виглядає як зламана модель, а не як той, хто чекає.
+     */
+    enterIdle() {
+        this.idle = true;
+        this.idleTimer = 0;
+
+        // Скидаємо незавершені дії, щоб персонаж не «завис» у стрибку.
+        this.isJumping = false;
+        this.isSliding = false;
+        this.applySlideScale(false);
+
+        this.freezeAnimationAtPose();
+    }
+
+    /** Повертає біг. Викликається на старті та рестарті. */
+    enterRun() {
+        this.idle = false;
+        this.idleTimer = 0;
+        this.playerVisual.getTransform().setLocalPosition(this.baseVisualPos);
+        this.restoreAnimationPlayback();
+    }
+
     /** Повертає гравця в стартовий стан — використовується при рестарті. */
     reset() {
         this.currentLane = 1;
@@ -195,6 +231,14 @@ export class PlayerController extends BaseScriptComponent {
 
     private onUpdate() {
         const dt = getDeltaTime();
+
+        // У режимі очікування персонаж лише дихає — смуги, стрибок і
+        // блендінг strafe тут не мають сенсу.
+        if (this.idle) {
+            this.updateIdleBreathing(dt);
+            return;
+        }
+
         const transform = this.getSceneObject().getTransform();
         const position = transform.getLocalPosition();
 
@@ -261,5 +305,56 @@ export class PlayerController extends BaseScriptComponent {
         if (clip) {
             clip.weight = weight;
         }
+    }
+
+    /** Зупиняє час усіх кліпів і лишає видимим лише кадр-стійку. */
+    private freezeAnimationAtPose() {
+        if (!this.animationPlayer) {
+            return;
+        }
+        const names = [PlayerController.CLIP_RUN, PlayerController.CLIP_LEFT, PlayerController.CLIP_RIGHT];
+        for (const name of names) {
+            const clip = this.animationPlayer.getClip(name);
+            if (clip) {
+                clip.weight = name === CONFIG.idlePoseClip ? 1 : 0;
+            }
+        }
+
+        // Перемотуємо на потрібний кадр, і аж потім зупиняємо час:
+        // playClipAt() запускає відтворення, тож нульова швидкість має
+        // виставлятися після нього, інакше кліп поїде далі.
+        this.animationPlayer.playClipAt(CONFIG.idlePoseClip, CONFIG.idlePoseTime);
+        for (const name of names) {
+            const clip = this.animationPlayer.getClip(name);
+            if (clip) {
+                clip.playbackSpeed = 0;
+            }
+        }
+    }
+
+    /** Знімає паузу з кліпів після виходу з очікування. */
+    private restoreAnimationPlayback() {
+        if (!this.animationPlayer) {
+            return;
+        }
+        const names = [PlayerController.CLIP_RUN, PlayerController.CLIP_LEFT, PlayerController.CLIP_RIGHT];
+        for (const name of names) {
+            const clip = this.animationPlayer.getClip(name);
+            if (clip) {
+                clip.playbackSpeed = 1;
+            }
+        }
+        this.applyClipWeights(0);
+    }
+
+    /** Ледь помітне вертикальне «дихання», щоб стійка не виглядала мертвою. */
+    private updateIdleBreathing(dt: number) {
+        this.idleTimer += dt;
+        const offset = Math.sin(this.idleTimer * CONFIG.idleBreathSpeed) * CONFIG.idleBreathAmplitude;
+        this.playerVisual
+            .getTransform()
+            .setLocalPosition(
+                new vec3(this.baseVisualPos.x, this.baseVisualPos.y + offset, this.baseVisualPos.z)
+            );
     }
 }

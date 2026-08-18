@@ -151,6 +151,7 @@ export class GameManager extends BaseScriptComponent {
 
         this.scoreManager.reset();
         this.player.reset();
+        this.player.enterRun();
         this.spawner.reset();
         this.spawner.setRunning(true);
 
@@ -162,6 +163,8 @@ export class GameManager extends BaseScriptComponent {
     private endGame() {
         this.state = GameState.GameOver;
         this.spawner.setRunning(false);
+        // Третє зіткнення — біг зупиняється, персонаж переходить у стійку.
+        this.player.enterIdle();
         this.ui.showGameOver(this.scoreManager.getScore(), this.scoreManager.getBest());
     }
 
