@@ -54,6 +54,8 @@ export class GameManager extends BaseScriptComponent {
     private lives: number = CONFIG.maxLives;
     private elapsedTime: number = 0;
     private lastHitTime: number = -999;
+    /** Скільки ще триває прискорення за вдалий стрибок, с. */
+    private boostTimer: number = 0;
 
     onAwake() {
         // Тут можна чіпати лише себе. Цей компонент висить на батьківському
@@ -73,6 +75,7 @@ export class GameManager extends BaseScriptComponent {
     private onStart() {
         this.spawner.onObstacleHit(() => this.onObstacleHit());
         this.spawner.onCoinCollected(() => this.onCoinCollected());
+        this.spawner.onJumpCleared(() => this.onJumpCleared());
         this.enterMenu();
     }
 
@@ -148,6 +151,7 @@ export class GameManager extends BaseScriptComponent {
         this.lives = CONFIG.maxLives;
         this.elapsedTime = 0;
         this.lastHitTime = -999;
+        this.boostTimer = 0;
 
         this.scoreManager.reset();
         this.player.reset();
@@ -192,7 +196,7 @@ export class GameManager extends BaseScriptComponent {
             CONFIG.spawnIntervalStart - this.elapsedTime * CONFIG.spawnIntervalRampPerSecond
         );
 
-        this.spawner.setSpeed(speed);
+        this.spawner.setSpeed(speed * this.consumeBoost(dt));
         this.spawner.setSpawnInterval(interval);
 
         this.scoreManager.addTime(dt);
@@ -222,6 +226,34 @@ export class GameManager extends BaseScriptComponent {
         } else {
             this.player.startHitFlash();
         }
+    }
+
+    /**
+     * Вдалий стрибок нагороджується ривком швидкості.
+     *
+     * Прискорення множиться на базову швидкість, а не додається до неї:
+     * так ривок відчувається однаково і на початку гри, і коли світ уже
+     * розігнався. Стеля `maxSpeed` на нього навмисно не поширюється —
+     * це коротка нагорода, а не новий рівень складності.
+     */
+    private onJumpCleared() {
+        if (this.state !== GameState.Playing) {
+            return;
+        }
+        this.boostTimer = CONFIG.jumpBoostDuration;
+    }
+
+    /** Повертає поточний множник швидкості й підточує таймер прискорення. */
+    private consumeBoost(deltaTime: number): number {
+        if (this.boostTimer <= 0) {
+            return 1;
+        }
+
+        // Множник спадає лінійно від максимуму до 1 — ривок на вході,
+        // плавне повернення до звичайного темпу на виході.
+        const strength = this.boostTimer / CONFIG.jumpBoostDuration;
+        this.boostTimer = Math.max(0, this.boostTimer - deltaTime);
+        return 1 + (CONFIG.jumpBoostMultiplier - 1) * strength;
     }
 
     private onCoinCollected() {

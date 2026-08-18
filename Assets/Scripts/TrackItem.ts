@@ -1,6 +1,16 @@
 import { LANE_X, CONFIG } from './GameConfig';
 import { PlayerController } from './PlayerController';
 
+/** Чим закінчилася зустріч обʼєкта з гравцем. */
+export enum Encounter {
+    /** Гравець ще не порівнявся з обʼєктом або він в іншій смузі. */
+    None = 'None',
+    /** Влучання: для перешкоди — мінус життя, для монетки — підбір. */
+    Hit = 'Hit',
+    /** Гравець ухилився — перестрибнув або підкотився. */
+    Cleared = 'Cleared',
+}
+
 /** Що саме летить на гравця. Тип задає і поведінку, і спосіб ухилитись. */
 export enum ItemKind {
     /** Стіна на всю висоту — рятує лише зміна смуги. */
@@ -96,27 +106,34 @@ export class TrackItem {
     }
 
     /**
-     * Чи зіткнувся цей обʼєкт з гравцем саме зараз.
-     * Для монетки означає "підібрано".
+     * Вирішує, чим закінчилася зустріч із гравцем, і одразу позначає
+     * обʼєкт відпрацьованим, щоб він не спрацював двічі.
+     *
+     * Рішення приймається в мить, коли гравець входить у зону обʼєкта:
+     * був у повітрі — `Cleared`, не був — `Hit`. Саме тому обʼєкт
+     * закривається одразу: приземлення посеред зони не має заднім
+     * числом перетворювати вдалий стрибок на зіткнення.
      */
-    overlapsPlayer(player: PlayerController): boolean {
+    resolveEncounter(player: PlayerController): Encounter {
         if (!this.active || this.consumed) {
-            return false;
+            return Encounter.None;
         }
         if (player.getLane() !== this.lane) {
-            return false;
+            return Encounter.None; // ухилення зміною смуги — не наш випадок
         }
 
         const halfDepth = this.kind === ItemKind.Coin ? CONFIG.coinHalfDepth : CONFIG.hitHalfDepth;
         if (Math.abs(this.z - CONFIG.playerZ) > halfDepth) {
-            return false;
+            return Encounter.None;
         }
 
-        return this.isNotAvoided(player);
+        const hit = this.isNotAvoided(player);
+        this.consume();
+        return hit ? Encounter.Hit : Encounter.Cleared;
     }
 
     /** Позначає обʼєкт як відпрацьований, щоб він не спрацював двічі. */
-    consume() {
+    private consume() {
         this.consumed = true;
         if (this.kind === ItemKind.Coin) {
             // Монетка зникає одразу — це очікуваний фідбек на підбір.

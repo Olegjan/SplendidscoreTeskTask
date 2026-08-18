@@ -1,5 +1,5 @@
 import { CONFIG, LANE_COUNT } from './GameConfig';
-import { ItemKind, TrackItem } from './TrackItem';
+import { Encounter, ItemKind, TrackItem } from './TrackItem';
 import { PlayerController } from './PlayerController';
 
 /**
@@ -56,6 +56,7 @@ export class TrackSpawner extends BaseScriptComponent {
 
     private onHitHandler: (() => void) | null = null;
     private onCoinHandler: (() => void) | null = null;
+    private onJumpClearedHandler: (() => void) | null = null;
 
     onAwake() {
         this.buildPools();
@@ -72,6 +73,11 @@ export class TrackSpawner extends BaseScriptComponent {
 
     onCoinCollected(handler: () => void) {
         this.onCoinHandler = handler;
+    }
+
+    /** Спрацьовує, коли гравець успішно перестрибнув низьку перешкоду. */
+    onJumpCleared(handler: () => void) {
+        this.onJumpClearedHandler = handler;
     }
 
     setRunning(running: boolean) {
@@ -198,20 +204,22 @@ export class TrackSpawner extends BaseScriptComponent {
 
     private checkCollisions() {
         for (const item of this.obstacles) {
-            if (item.overlapsPlayer(this.player)) {
-                item.consume();
-                if (this.onHitHandler) {
-                    this.onHitHandler();
+            const outcome = item.resolveEncounter(this.player);
+
+            if (outcome === Encounter.Hit && this.onHitHandler) {
+                this.onHitHandler();
+            } else if (outcome === Encounter.Cleared && item.kind === ItemKind.JumpOver) {
+                // Нагороду дає саме стрибок. Підкат теж дає Cleared, але за
+                // нього прискорення не нараховуємо — так просив дизайн.
+                if (this.onJumpClearedHandler) {
+                    this.onJumpClearedHandler();
                 }
             }
         }
 
         for (const item of this.coins) {
-            if (item.overlapsPlayer(this.player)) {
-                item.consume();
-                if (this.onCoinHandler) {
-                    this.onCoinHandler();
-                }
+            if (item.resolveEncounter(this.player) === Encounter.Hit && this.onCoinHandler) {
+                this.onCoinHandler();
             }
         }
     }
