@@ -27,7 +27,7 @@ metaInfo:
     - Mobile
     - CameraKit
   platformBundlesEnabled: false
-  iconHash: ""
+  iconHash: 7e7e062a6e51d524025591c5231c7e6e
   videoPreviewHash: ""
   fromTemplateName: Default
   fromTemplateUrl: Lens Studio 5.23.2.26081320
