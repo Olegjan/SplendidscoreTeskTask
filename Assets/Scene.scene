@@ -291,6 +291,7 @@
     - !<own> 485788b7-8af2-48ae-acc4-be93091b5f5f
     - !<own> 3289167b-4101-4170-8e50-0c4259961b3c
     - !<own> 3fd712a3-03d9-489b-a9d7-5488695a24d4
+    - !<own> df70ce67-edf5-41a3-81a8-59adb33905d1
   Components:
     - !<own> a5884281-8793-4e2c-9558-32733b154e40
 - !<SceneObject/0e5bd607-d4ad-4905-a136-8f3694ece05d>
@@ -527,6 +528,23 @@
   Components:
     - !<own> 3161eccf-51d0-4f1e-992b-b26c0969e670
     - !<own> bcb6203a-f14a-4604-8ad8-75a05b6a26b4
+- !<AudioComponent/1d77a90a-85c5-4ad5-a995-266dc657bdcd>
+  PrefabRemaps:
+    []
+  Name: Audio
+  Enabled: true
+  AudioTrack: !<reference> ddd93773-4acc-4459-a711-cd92c91ecf34
+  EnableAutoplayLoop: false
+  Volume: 0.600000
+  EnableMixToSnap: false
+  RecordVolume: 1.000000
+  EnableSpatialAudio: false
+  EnableDistanceEffect: false
+  CurveType: Logarithm
+  MinDistance: 0.000000
+  MaxDistance: 100.000000
+  EnableDirectivityEffect: false
+  EnablePositionEffect: false
 - !<AnimationPlayer/23460fb1-abc2-4e8f-9257-e39cd6e509ca>
   PrefabRemaps:
     []
@@ -1528,6 +1546,7 @@
       hitSound: !<reference.AudioComponent> ac01eca9-f17c-44d0-8d3b-516d2cbfebd6
       jumpSound: !<reference.AudioComponent> efa5ff0e-0288-44ec-8f4c-0270ac900e27
       slideSound: !<reference.AudioComponent> 89ec1e1f-edd2-4ddf-8675-6de9a102870f
+      laneSound: !<reference.AudioComponent> 1d77a90a-85c5-4ad5-a995-266dc657bdcd
   ScriptTypes:
     "":
       {}
@@ -2058,6 +2077,21 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
+- !<SceneObject/df70ce67-edf5-41a3-81a8-59adb33905d1>
+  PrefabRemaps:
+    []
+  Name: SFX_Lane
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1d77a90a-85c5-4ad5-a995-266dc657bdcd
 - !<AudioComponent/df8f84fc-635c-4ef1-8646-a8881e30251c>
   PrefabRemaps:
     []

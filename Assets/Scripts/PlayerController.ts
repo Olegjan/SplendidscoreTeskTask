@@ -104,12 +104,14 @@ export class PlayerController extends BaseScriptComponent {
     // Команди ззовні
     // ---------------------------------------------------------------
 
-    moveLeft() {
-        this.changeLane(-1);
+    /** @returns true, якщо смуга змінилася. False — гравець уже скраю. */
+    moveLeft(): boolean {
+        return this.changeLane(-1);
     }
 
-    moveRight() {
-        this.changeLane(1);
+    /** @returns true, якщо смуга змінилася. False — гравець уже скраю. */
+    moveRight(): boolean {
+        return this.changeLane(1);
     }
 
     /**
@@ -174,13 +176,14 @@ export class PlayerController extends BaseScriptComponent {
     // Внутрішнє
     // ---------------------------------------------------------------
 
-    private changeLane(delta: number) {
+    private changeLane(delta: number): boolean {
         const target = clampLane(this.currentLane + delta);
         if (target === this.currentLane) {
-            return; // вже скраю — жест ігноруємо
+            return false; // вже скраю — жест ігноруємо
         }
         this.currentLane = target;
         this.targetDirection = delta > 0 ? 1 : -1;
+        return true;
     }
 
     private applySlideScale(sliding: boolean) {

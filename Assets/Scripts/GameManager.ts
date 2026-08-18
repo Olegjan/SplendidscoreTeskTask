@@ -89,11 +89,16 @@ export class GameManager extends BaseScriptComponent {
         }
 
         switch (direction) {
+            // Скраю смуга не міняється — тоді й клацати нема про що.
             case Swipe.Left:
-                this.player.moveLeft();
+                if (this.player.moveLeft() && this.audio) {
+                    this.audio.playLaneChange();
+                }
                 break;
             case Swipe.Right:
-                this.player.moveRight();
+                if (this.player.moveRight() && this.audio) {
+                    this.audio.playLaneChange();
+                }
                 break;
             case Swipe.Up:
                 // Звук лише якщо дія справді почалася — інакше свайп під час

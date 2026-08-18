@@ -31,6 +31,11 @@ export class AudioManager extends BaseScriptComponent {
     @hint('Звук підкату.')
     slideSound: AudioComponent;
 
+    @input
+    @allowUndefined
+    @hint('Короткий клац на зміну смуги. Тихіший за решту — лунає найчастіше.')
+    laneSound: AudioComponent;
+
     playCoin() {
         this.playOneShot(this.coinSound);
     }
@@ -45,6 +50,10 @@ export class AudioManager extends BaseScriptComponent {
 
     playSlide() {
         this.playOneShot(this.slideSound);
+    }
+
+    playLaneChange() {
+        this.playOneShot(this.laneSound);
     }
 
     /**
