@@ -1,0 +1,64 @@
+- !<AssetImportMetadata/535bf3a5-d841-4437-937c-5a879bf3ce2a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 32ed2e28-8110-4c86-8240-2044d76faa2e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 32ed2e28-8110-4c86-8240-2044d76faa2e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 865b03ba-5242-4dec-9354-6732690dd1a8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/865b03ba-5242-4dec-9354-6732690dd1a8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: b797977c-d22f-40c3-997d-86b7d5b74f4a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bestScoreText: false
+    finalScoreText: false
+    gameOverPanel: false
+    hudPanel: false
+    livesText: false
+    menuPanel: false
+    scoreText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - menuPanel: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hudPanel: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      gameOverPanel: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      scoreText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      livesText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      finalScoreText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      bestScoreText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject menuPanel {"hint":"Стартовий екран."}'
+    - '// @input SceneObject hudPanel {"hint":"Ігровий HUD: рахунок і життя."}'
+    - '// @input SceneObject gameOverPanel {"hint":"Екран завершення гри."}'
+    - // @input Component.Text scoreText
+    - // @input Component.Text livesText
+    - // @input Component.Text finalScoreText
+    - '// @input Component.Text bestScoreText {"hint":"Рекорд за сесію. Необовʼязковий."}'

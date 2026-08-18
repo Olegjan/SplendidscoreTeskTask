@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/02b10fba-14b1-4a56-af04-4c0cd8fa7272>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9f7d40d7-7709-4d77-bf15-7ff6c2835b2b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9f7d40d7-7709-4d77-bf15-7ff6c2835b2b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0bc3101a-59b0-444a-add7-2f45ca38062e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0bc3101a-59b0-444a-add7-2f45ca38062e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 0bd855f0-d95e-4754-9306-6ee426ec3129
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animationPlayer: false
+    leftAnimation: false
+    playerVisual: false
+    rightAnimation: false
+    runAnimation: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - playerVisual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      animationPlayer: !<reference.AnimationPlayer> 00000000-0000-0000-0000-000000000000
+      runAnimation: !<reference.AnimationAsset> 00000000-0000-0000-0000-000000000000
+      leftAnimation: !<reference.AnimationAsset> 00000000-0000-0000-0000-000000000000
+      rightAnimation: !<reference.AnimationAsset> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject playerVisual {"hint":"Обʼєкт Bitmoji-персонажа (нащадок цього обʼєкта). Його стискаємо під час підкату."}'
+    - '// @input Component.AnimationPlayer animationPlayer {"hint":"Animation Player на обʼєкті Bitmoji. Без нього гра працює, просто без анімації."}'
+    - '// @input Asset.AnimationAsset runAnimation {"hint":"Mixamo \"Fast Run\" — базовий біг."}'
+    - '// @input Asset.AnimationAsset leftAnimation {"hint":"Mixamo \"Left Strafe\" — нахил вліво при зміні смуги."}'
+    - '// @input Asset.AnimationAsset rightAnimation {"hint":"Mixamo \"Right Strafe\" — нахил вправо при зміні смуги."}'

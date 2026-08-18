@@ -1,0 +1,17 @@
+# BEGIN Lens Studio managed Agents-Docs block
+.mcp.json
+.cursor/mcp.json
+.vscode/mcp.json
+.codex/config.toml
+.claude/settings.local.json
+# END Lens Studio managed Agents-Docs block
+
+# Scene dump produced by tooling, regenerated on demand
+.virtual-scene.json
+
+# Lens Studio project lock file (per-machine)
+*.esproj.*.lock
+
+# Інструкції для AI-агентів (шаблон Lens Studio), не частина проєкту
+AGENTS.md
+CLAUDE.md

@@ -1,0 +1,61 @@
+- !<AssetImportMetadata/d6d58b86-6124-4968-8495-c00982695726>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 04d4189d-6f49-420c-96d0-56bb2532ceff
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 04d4189d-6f49-420c-96d0-56bb2532ceff
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> af828912-42b9-418d-9d8f-6a0b2ed7592a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/af828912-42b9-418d-9d8f-6a0b2ed7592a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 487aa749-a41e-432e-aea6-88df8e60cfec
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    barrierTemplate: false
+    coinTemplate: false
+    jumpTemplate: false
+    player: false
+    poolRoot: false
+    slideTemplate: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - poolRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      player: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      barrierTemplate: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      jumpTemplate: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      slideTemplate: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      coinTemplate: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject poolRoot {"hint":"Порожній обʼєкт, під яким складаються всі клони пулу."}'
+    - '// @input AssignableType_1 player {"hint":"Гравець — потрібен, щоб перевіряти зіткнення."}'
+    - '// @input SceneObject barrierTemplate {"hint":"Стіна на всю висоту: оминається лише зміною смуги."}'
+    - '// @input SceneObject jumpTemplate {"hint":"Низька перешкода: перестрибнути."}'
+    - '// @input SceneObject slideTemplate {"hint":"Підвішена перешкода: підкотитись під нею."}'
+    - '// @input SceneObject coinTemplate {"hint":"Монетка: дає бали."}'
