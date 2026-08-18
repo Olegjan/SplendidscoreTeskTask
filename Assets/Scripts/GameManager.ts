@@ -142,6 +142,10 @@ export class GameManager extends BaseScriptComponent {
         this.spawner.setRunning(false);
         this.spawner.reset();
         this.player.reset();
+        // Доріжка ще стоїть, тож і персонаж має стояти: біг на місці до
+        // першого тапу читався б як гра, що вже почалась. Та сама стійка,
+        // що й після Game Over — стартовий екран і фінальний рівноцінні.
+        this.player.enterIdle();
         this.ui.showMenu();
     }
 
