@@ -96,10 +96,16 @@ export class GameManager extends BaseScriptComponent {
                 this.player.moveRight();
                 break;
             case Swipe.Up:
-                this.player.jump();
+                // Звук лише якщо дія справді почалася — інакше свайп під час
+                // попереднього стрибка «клацав» би без жодного руху на екрані.
+                if (this.player.jump() && this.audio) {
+                    this.audio.playJump();
+                }
                 break;
             case Swipe.Down:
-                this.player.slide();
+                if (this.player.slide() && this.audio) {
+                    this.audio.playSlide();
+                }
                 break;
         }
     }

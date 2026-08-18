@@ -112,22 +112,29 @@ export class PlayerController extends BaseScriptComponent {
         this.changeLane(1);
     }
 
-    jump() {
+    /**
+     * @returns true, якщо стрибок справді почався. Під час іншої дії
+     * запит ігнорується — і тоді викликач не має, наприклад, грати звук.
+     */
+    jump(): boolean {
         // Одна дія за раз: стрибок під час підкату виглядав би як баг.
         if (this.isJumping || this.isSliding) {
-            return;
+            return false;
         }
         this.isJumping = true;
         this.jumpTimer = 0;
+        return true;
     }
 
-    slide() {
+    /** @returns true, якщо підкат справді почався. Див. коментар до jump(). */
+    slide(): boolean {
         if (this.isJumping || this.isSliding) {
-            return;
+            return false;
         }
         this.isSliding = true;
         this.slideTimer = 0;
         this.applySlideScale(true);
+        return true;
     }
 
     /** Повертає гравця в стартовий стан — використовується при рестарті. */

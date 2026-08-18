@@ -4,9 +4,9 @@
  * Звукові ефекти подій гри. Як і UIManager, нічого не вирішує —
  * лише отримує команду «зіграй це» і грає.
  *
- * Окремий файл, а не два поля в GameManager: коли додасться звук
- * стрибка, підкату чи фонова музика, вони приїдуть сюди, а не
- * розмиють стан-машину.
+ * Окремий файл, а не чотири поля в GameManager: коли додасться фонова
+ * музика чи звук зміни смуги, вони приїдуть сюди, а не розмиють
+ * стан-машину.
  * ---------------------------------------------------------------
  */
 @component
@@ -21,12 +21,30 @@ export class AudioManager extends BaseScriptComponent {
     @hint('Глухий звук зіткнення з перешкодою.')
     hitSound: AudioComponent;
 
+    @input
+    @allowUndefined
+    @hint('Звук відштовхування при стрибку.')
+    jumpSound: AudioComponent;
+
+    @input
+    @allowUndefined
+    @hint('Звук підкату.')
+    slideSound: AudioComponent;
+
     playCoin() {
         this.playOneShot(this.coinSound);
     }
 
     playHit() {
         this.playOneShot(this.hitSound);
+    }
+
+    playJump() {
+        this.playOneShot(this.jumpSound);
+    }
+
+    playSlide() {
+        this.playOneShot(this.slideSound);
     }
 
     /**
