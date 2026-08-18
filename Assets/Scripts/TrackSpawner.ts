@@ -17,6 +17,10 @@ import { PlayerController } from './PlayerController';
  * відливки", у грі показуються тільки їхні копії.
  * ---------------------------------------------------------------
  */
+
+/** Порядок, у якому чергуються типи перешкод. */
+const OBSTACLE_KINDS: ItemKind[] = [ItemKind.Barrier, ItemKind.JumpOver, ItemKind.SlideUnder];
+
 @component
 export class TrackSpawner extends BaseScriptComponent {
     @input
@@ -53,6 +57,8 @@ export class TrackSpawner extends BaseScriptComponent {
     private obstacleTimer: number = 0;
     private coinTimer: number = 0;
     private lastObstacleLane: number = -1;
+    /** Наступний тип перешкоди в черзі — див. takeFreeObstacle(). */
+    private nextKindIndex: number = 0;
 
     private onHitHandler: (() => void) | null = null;
     private onCoinHandler: (() => void) | null = null;
@@ -106,6 +112,7 @@ export class TrackSpawner extends BaseScriptComponent {
         this.obstacleTimer = -CONFIG.spawnIntervalStart;
         this.coinTimer = 0;
         this.lastObstacleLane = -1;
+        this.nextKindIndex = 0;
     }
 
     // ---------------------------------------------------------------
@@ -117,8 +124,9 @@ export class TrackSpawner extends BaseScriptComponent {
             { template: this.slideTemplate, kind: ItemKind.SlideUnder },
         ];
 
-        // Пул перешкод набирається по колу, щоб усі три типи були
-        // представлені рівномірно, а не як пощастить з рандомом.
+        // Пул набирається по колу, щоб обʼєктів кожного типу вистачало
+        // на всіх, хто одночасно в дорозі. За саме чергування типів у грі
+        // відповідає takeFreeObstacle(), а не порядок у цьому масиві.
         for (let i = 0; i < CONFIG.obstaclePoolSize; i++) {
             const source = templates[i % templates.length];
             this.obstacles.push(this.instantiate(source.template, source.kind));
@@ -170,7 +178,7 @@ export class TrackSpawner extends BaseScriptComponent {
     }
 
     private spawnObstacle() {
-        const free = this.obstacles.find((item) => !item.isActive());
+        const free = this.takeFreeObstacle();
         if (!free) {
             return; // пул вичерпано — пропускаємо такт, це краще за фрейм-дроп
         }
@@ -184,6 +192,31 @@ export class TrackSpawner extends BaseScriptComponent {
         this.lastObstacleLane = lane;
 
         free.activate(lane);
+    }
+
+    /**
+     * Видає вільну перешкоду наступного за чергою типу.
+     *
+     * Раніше тут стояло «перший вільний обʼєкт пулу», і тип залежав від
+     * того, хто встиг доїхати до despawn: що швидший світ, то частіше
+     * звільнявся низькоіндексний обʼєкт, і на розгоні підвісні перешкоди
+     * зникали з гри зовсім. Тепер тип задає лічильник, а пул лише
+     * постачає обʼєкт потрібного типу.
+     *
+     * Якщо всі обʼєкти потрібного типу ще в дорозі, беремо наступний тип
+     * замість пропуску такту: діра в доріжці помітніша за збій черги.
+     */
+    private takeFreeObstacle(): TrackItem | null {
+        for (let step = 0; step < OBSTACLE_KINDS.length; step++) {
+            const index = (this.nextKindIndex + step) % OBSTACLE_KINDS.length;
+            const kind = OBSTACLE_KINDS[index];
+            const free = this.obstacles.find((item) => !item.isActive() && item.kind === kind);
+            if (free) {
+                this.nextKindIndex = (index + 1) % OBSTACLE_KINDS.length;
+                return free;
+            }
+        }
+        return null;
     }
 
     private spawnCoin() {
