@@ -4,6 +4,7 @@ import { TrackSpawner } from './TrackSpawner';
 import { UIManager } from './UIManager';
 import { ScoreManager } from './ScoreManager';
 import { Swipe, SwipeInput } from './SwipeInput';
+import { AudioManager } from './AudioManager';
 
 /**
  * GameManager.ts
@@ -40,6 +41,11 @@ export class GameManager extends BaseScriptComponent {
 
     @input
     ui: UIManager;
+
+    @input
+    @allowUndefined
+    @hint('Звуки подій. Необовʼязковий — без нього гра працює мовчки.')
+    audio: AudioManager;
 
     private readonly scoreManager: ScoreManager = new ScoreManager();
     private input: SwipeInput;
@@ -186,6 +192,9 @@ export class GameManager extends BaseScriptComponent {
 
         this.lives -= 1;
         this.ui.updateLives(this.lives, CONFIG.maxLives);
+        if (this.audio) {
+            this.audio.playHit();
+        }
 
         if (this.lives <= 0) {
             this.endGame();
@@ -198,5 +207,8 @@ export class GameManager extends BaseScriptComponent {
         }
         this.scoreManager.addCoin();
         this.ui.updateScore(this.scoreManager.getScore());
+        if (this.audio) {
+            this.audio.playCoin();
+        }
     }
 }

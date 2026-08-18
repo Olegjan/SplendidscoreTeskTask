@@ -1,0 +1,49 @@
+- !<AssetImportMetadata/bbddcd0a-feef-4496-8ab4-0a2910cc738f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c5938216-bec2-4a51-bda9-10aa44b72f09
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c5938216-bec2-4a51-bda9-10aa44b72f09
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c0e25596-43d2-426a-a562-ed8496231cf9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c0e25596-43d2-426a-a562-ed8496231cf9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 372a2816-a264-4291-a18d-b3adf48c79fd
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    coinSound: false
+    hitSound: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - coinSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      hitSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.AudioComponent coinSound {"hint":"Короткий звук підбору монетки."}'
+    - '// @input Component.AudioComponent hitSound {"hint":"Глухий звук зіткнення з перешкодою."}'

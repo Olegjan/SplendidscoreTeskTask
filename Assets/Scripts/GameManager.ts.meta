@@ -28,6 +28,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    audio: false
     player: false
     spawner: false
     ui: false
@@ -43,6 +44,7 @@
     - player: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       spawner: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
       ui: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      audio: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -50,3 +52,4 @@
     - // @input AssignableType_1 player
     - // @input AssignableType_2 spawner
     - // @input AssignableType_3 ui
+    - '// @input AssignableType_4 audio {"hint":"Звуки подій. Необовʼязковий — без нього гра працює мовчки."}'

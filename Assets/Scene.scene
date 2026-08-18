@@ -5,6 +5,7 @@
     - !<own> 0005641c-028d-459a-0000-000000014b4d
     - !<own> 7bfbb2ef-3cc1-4a8f-88bb-01939bf5d83d
     - !<own> 88db7fbf-19dd-4995-b719-309f0857a7b2
+    - !<own> a4e65d68-5d78-4365-b420-0663780ad885
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -236,6 +237,60 @@
     []
   Components:
     - !<own> c696f267-714b-4de9-b068-23f7bbcfe407
+- !<SceneObject/0e0b15e9-2074-45ee-a8c8-625854f36e25>
+  PrefabRemaps:
+    - 03c6841d-9ee5-4e26-8bed-804f204e3cd5: 2f1c04ed-0258-423a-74ed-45675288f6d3
+    - 06db4ffb-d25b-4c23-b4fe-e2abe5dc6f65: e505d1c6-417f-408e-641b-b4199c8a080c
+    - 07db17fb-7609-4dfc-9a90-4a4e1fb96b52: a30139b7-ae13-4ac5-6a4d-eeb1b3b1a44e
+    - 0e0b15e9-2074-45ee-a8c8-625854f36e25: 2953ab0f-67d2-4318-6da1-cfce8bfd2d6e
+    - 263cd195-d848-43ff-b29f-212e130953e2: d1791410-9ae8-45dd-5142-b14ef31ebe7b
+    - 30eaf779-b394-4d0d-bdc9-ea37d2b80877: 697193b6-f54e-4773-43d2-54ba0a0f93c5
+    - 374d9056-922b-41e7-beae-a57e607caef1: 3ee94105-e77b-4e67-78cd-9929adf00dbb
+    - 3bfed58b-a3b7-40eb-bc6d-49a6134eaad6: a27069b0-bc89-4b54-5b9a-21e8c704b204
+    - 3dd26e59-c177-4494-b759-1f5d09e25b0a: 7c9b4a83-852b-420b-6bd0-0ffc05e6f483
+    - 46e11040-4882-4b85-9ffc-8e3c140c1ca0: 828e50fb-d2a8-4289-50de-c31d37084ea1
+    - 47e8ffaa-c1e9-448b-9106-51aed498a758: f7f42870-1e1b-4dc0-7bfd-fd34ec23bcd4
+    - 485788b7-8af2-48ae-acc4-be93091b5f5f: 00e246c6-1ea9-455e-7d06-255d33fff666
+    - 63e5068a-0c2c-4c19-881e-be457f2f30ad: 90019f8b-9132-4b78-4096-1ead501e7352
+    - 6afdb30d-458a-4f40-9594-84023c68d978: 616dc37f-d6da-4d91-4468-2ad92b4075f2
+    - 6c87e46c-bdf6-4d07-9739-d567ca91691f: ce8ebdbf-67de-4f6f-6fd1-c04af2ac5980
+    - 6d80ac8f-c319-4f1d-8275-fde3222676aa: 31194d44-3f99-4b64-6dda-d1f8148957da
+    - 7a2b35c6-c333-4fd3-8d40-fb20f949bc05: 9c917e25-7383-4d4c-4682-88fe80b4772a
+    - 7b8e634f-f76d-4d92-918d-fdb14ca9564e: 861e1266-c5dd-489e-7e17-3710ee8592fa
+    - 7f365406-abcf-4f3b-89b7-98ad223e8cc8: 9214ed21-cf08-45c2-48e4-66d543154435
+    - 83c3a127-ab3f-4488-a4e3-774b2eff9b05: dff50679-2709-45e1-7fce-c6dbcb176435
+    - 849ba7a1-cf85-4ada-af98-0ddb46a8e9e8: 53f54342-e53b-45ef-4997-d39af31308de
+    - 8b641a0b-4116-43ca-9ef7-d47a794feb7e: 146dd5de-6812-4918-6c51-e6ea5d0f8f2b
+    - 8beb075f-1889-4d4d-af04-62b815708d7a: ac54d8cb-9efa-4f9f-4223-6095d2809224
+    - 9301fde8-6881-479c-aaa9-a8af623dc41b: 7b57c10e-1443-4c54-7594-14ad05b53f37
+    - 94fd2365-0ff9-4319-bb38-d3aab00a7110: 21899c7b-93eb-48a7-624e-7edd90eddce8
+    - 9c21795e-4892-407e-a428-16e813171ae4: 7b8a97af-cd83-4bf3-627e-ca880a5fe5fe
+    - a08eb1c7-36d4-4fc4-9f2d-ffa6be22112d: 174a9e56-5620-4b99-6954-1536ada491b6
+    - a1f31421-6467-4aa8-a193-61f9b7ff82fb: 168cc7f0-54f4-483d-732a-98e4c3551dbd
+    - a45fe5ee-8c05-4b37-9fb7-223876ea34d1: 501ae8b7-74c0-44f5-69ee-45e48f2f5459
+    - ac01eca9-f17c-44d0-8d3b-516d2cbfebd6: 94b315f1-cea6-44b4-5984-065e5fe7ae69
+    - d1234fa6-9389-4b1e-8ed6-0fd73b3c8449: 00c6b896-fa07-4ac8-7642-6c7c48aaa2cc
+    - dd6c3638-e37d-4a9e-8d05-21b55249cb50: 37786fe4-3a9c-47b5-40f3-dbd2c72bfbd5
+    - df2d14fc-9846-4b43-8c1c-baebf89e6397: 2e2db0e4-a3d3-485b-7f97-328df5a871e3
+    - df8f84fc-635c-4ef1-8646-a8881e30251c: f58cad6a-17ac-4ab0-5eab-db84f61a8d7e
+    - e529f8bb-a643-47e7-980e-28e749035121: d7d9ebf3-7686-4fb2-5714-3b0a01bebc3e
+    - eb49aab2-1360-4f9d-b660-6a62ba59a979: 933d5d63-b279-49c5-7c60-35937b5af19a
+    - f21fa86c-958e-4bd3-9bf5-ccb3eb51bae8: d143e3aa-f6d3-408e-4b2c-a1ad9c56af3d
+    - fa0defd8-b904-4858-a1fa-1d02a47f04da: b7314596-b113-4745-7e15-f201cbc4b498
+    - fa168785-d053-44cd-b0cf-51fd21cf88c7: c8a5cce9-8a6a-44e5-5f89-0c14977a41ec
+  Name: Audio
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 6c87e46c-bdf6-4d07-9739-d567ca91691f
+    - !<own> 485788b7-8af2-48ae-acc4-be93091b5f5f
+  Components:
+    - !<own> a5884281-8793-4e2c-9558-32733b154e40
 - !<SceneObject/0e5bd607-d4ad-4905-a136-8f3694ece05d>
   PrefabRemaps:
     []
@@ -730,6 +785,21 @@
     []
   Components:
     - !<own> 32876867-8da6-4341-af61-826bfbc7865c
+- !<SceneObject/485788b7-8af2-48ae-acc4-be93091b5f5f>
+  PrefabRemaps:
+    []
+  Name: SFX_Coin
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> df8f84fc-635c-4ef1-8646-a8881e30251c
 - !<Camera/4d785a3b-4b74-4361-8bf3-c7e9146d825d>
   PrefabRemaps:
     []
@@ -947,6 +1017,21 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
+- !<SceneObject/6c87e46c-bdf6-4d07-9739-d567ca91691f>
+  PrefabRemaps:
+    []
+  Name: SFX_Hit
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ac01eca9-f17c-44d0-8d3b-516d2cbfebd6
 - !<SceneObject/6e5bf71f-6acb-4411-a7b3-014ec9421757>
   PrefabRemaps:
     []
@@ -1037,6 +1122,7 @@
     - !<own> d50e3daf-bd7c-4757-8fbd-7c7e05caa1f3
     - !<own> e4489343-6f3b-4612-8a94-eb7111d233b4
     - !<own> 402e5fb5-b40a-40c5-b246-42b8a4002bdd
+    - !<own> 0e0b15e9-2074-45ee-a8c8-625854f36e25
   Components:
     - !<own> 99790524-3bd0-4301-b732-fa9bfd109002
 - !<ScreenTransform/7f713a5b-cd2c-47a4-9c77-0ba1decc941c>
@@ -1093,6 +1179,22 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/81d30a53-2b32-46f3-9233-ac29cdf276ab>
+  PrefabRemaps:
+    []
+  Name: AgentInspectScript
+  Enabled: true
+  ScriptAsset: !<reference> 0b25079c-f5bf-4c6d-96c4-f43b89dfa213
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/88db7fbf-19dd-4995-b719-309f0857a7b2>
   PrefabRemaps:
     []
@@ -1272,6 +1374,7 @@
       player: !<MappingBased.AssignableType_1> 6e930267-0128-4862-84bf-1221c3889d41
       spawner: !<MappingBased.AssignableType_2> ecf5df48-3c04-42a6-a2f8-cd356ab70334
       ui: !<MappingBased.AssignableType_3> 32876867-8da6-4341-af61-826bfbc7865c
+      audio: !<MappingBased.AssignableType_4> a5884281-8793-4e2c-9558-32733b154e40
   ScriptTypes:
     "":
       {}
@@ -1345,6 +1448,38 @@
   Components:
     - !<own> baec7e9f-af81-4b53-9ceb-47fb601cba5d
     - !<own> 1b9fd4ba-5999-4d78-989c-bcc068fcb249
+- !<SceneObject/a4e65d68-5d78-4365-b420-0663780ad885>
+  PrefabRemaps:
+    []
+  Name: AiPreviewAgent Handler
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 81d30a53-2b32-46f3-9233-ac29cdf276ab
+- !<ScriptComponent/a5884281-8793-4e2c-9558-32733b154e40>
+  PrefabRemaps:
+    []
+  Name: AudioManager
+  Enabled: true
+  ScriptAsset: !<reference> c5938216-bec2-4a51-bda9-10aa44b72f09
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      coinSound: !<reference.AudioComponent> df8f84fc-635c-4ef1-8646-a8881e30251c
+      hitSound: !<reference.AudioComponent> ac01eca9-f17c-44d0-8d3b-516d2cbfebd6
+  ScriptTypes:
+    "":
+      {}
 - !<ScreenTransform/a914b31d-f7cb-4e4b-b1ba-8922fa148503>
   PrefabRemaps:
     []
@@ -1414,6 +1549,23 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<AudioComponent/ac01eca9-f17c-44d0-8d3b-516d2cbfebd6>
+  PrefabRemaps:
+    []
+  Name: Audio
+  Enabled: true
+  AudioTrack: !<reference> 3bd2abb9-b962-406d-b1a3-1518c5461101
+  EnableAutoplayLoop: false
+  Volume: 1.000000
+  EnableMixToSnap: false
+  RecordVolume: 1.000000
+  EnableSpatialAudio: false
+  EnableDistanceEffect: false
+  CurveType: Inverse
+  MinDistance: 0.000000
+  MaxDistance: 100.000000
+  EnableDirectivityEffect: false
+  EnablePositionEffect: false
 - !<Canvas/acfc75c7-5e34-4c84-921b-71675c381ae0>
   PrefabRemaps:
     []
@@ -1855,6 +2007,23 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
+- !<AudioComponent/df8f84fc-635c-4ef1-8646-a8881e30251c>
+  PrefabRemaps:
+    []
+  Name: Audio
+  Enabled: true
+  AudioTrack: !<reference> 26fbb533-a584-45a0-878a-ade91d5ab7b9
+  EnableAutoplayLoop: false
+  Volume: 1.000000
+  EnableMixToSnap: false
+  RecordVolume: 1.000000
+  EnableSpatialAudio: false
+  EnableDistanceEffect: false
+  CurveType: Inverse
+  MinDistance: 0.000000
+  MaxDistance: 100.000000
+  EnableDirectivityEffect: false
+  EnablePositionEffect: false
 - !<SceneObject/e4489343-6f3b-4612-8a94-eb7111d233b4>
   PrefabRemaps:
     []
