@@ -4,7 +4,7 @@ import { TrackSpawner } from './TrackSpawner';
 import { UIManager } from './UIManager';
 import { ScoreManager } from './ScoreManager';
 import { Swipe, SwipeInput } from './SwipeInput';
-import { AudioManager } from './AudioManager';
+import { AudioManager, Sfx } from './AudioManager';
 
 /**
  * GameManager.ts
@@ -89,29 +89,36 @@ export class GameManager extends BaseScriptComponent {
         }
 
         switch (direction) {
-            // Скраю смуга не міняється — тоді й клацати нема про що.
+            // Кожна команда повідомляє, чи дія справді відбулася: скраю смуга
+            // не міняється, а стрибок під час підкату ігнорується. Озвучуємо
+            // лише успішні — інакше свайп «клацав» би без руху на екрані.
             case Swipe.Left:
-                if (this.player.moveLeft() && this.audio) {
-                    this.audio.playLaneChange();
+                if (this.player.moveLeft()) {
+                    this.playSfx(Sfx.Lane);
                 }
                 break;
             case Swipe.Right:
-                if (this.player.moveRight() && this.audio) {
-                    this.audio.playLaneChange();
+                if (this.player.moveRight()) {
+                    this.playSfx(Sfx.Lane);
                 }
                 break;
             case Swipe.Up:
-                // Звук лише якщо дія справді почалася — інакше свайп під час
-                // попереднього стрибка «клацав» би без жодного руху на екрані.
-                if (this.player.jump() && this.audio) {
-                    this.audio.playJump();
+                if (this.player.jump()) {
+                    this.playSfx(Sfx.Jump);
                 }
                 break;
             case Swipe.Down:
-                if (this.player.slide() && this.audio) {
-                    this.audio.playSlide();
+                if (this.player.slide()) {
+                    this.playSfx(Sfx.Slide);
                 }
                 break;
+        }
+    }
+
+    /** Звук необовʼязковий, тож перевірку тримаємо в одному місці. */
+    private playSfx(event: Sfx) {
+        if (this.audio) {
+            this.audio.play(event);
         }
     }
 
@@ -203,9 +210,7 @@ export class GameManager extends BaseScriptComponent {
 
         this.lives -= 1;
         this.ui.updateLives(this.lives, CONFIG.maxLives);
-        if (this.audio) {
-            this.audio.playHit();
-        }
+        this.playSfx(Sfx.Hit);
 
         if (this.lives <= 0) {
             this.endGame();
@@ -218,8 +223,6 @@ export class GameManager extends BaseScriptComponent {
         }
         this.scoreManager.addCoin();
         this.ui.updateScore(this.scoreManager.getScore());
-        if (this.audio) {
-            this.audio.playCoin();
-        }
+        this.playSfx(Sfx.Coin);
     }
 }

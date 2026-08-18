@@ -28,11 +28,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    coinSound: false
-    hitSound: false
-    jumpSound: false
-    laneSound: false
-    slideSound: false
+    {}
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -42,17 +38,10 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - coinSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
-      hitSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
-      jumpSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
-      slideSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
-      laneSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+    -
+      {}
   ScriptTypes:
     -
       {}
   InputLines:
-    - '// @input Component.AudioComponent coinSound {"hint":"Короткий звук підбору монетки."}'
-    - '// @input Component.AudioComponent hitSound {"hint":"Глухий звук зіткнення з перешкодою."}'
-    - '// @input Component.AudioComponent jumpSound {"hint":"Звук відштовхування при стрибку."}'
-    - '// @input Component.AudioComponent slideSound {"hint":"Звук підкату."}'
-    - '// @input Component.AudioComponent laneSound {"hint":"Короткий клац на зміну смуги. Тихіший за решту — лунає найчастіше."}'
+    []

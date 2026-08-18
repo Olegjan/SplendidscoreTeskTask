@@ -1542,11 +1542,7 @@
     {}
   ScriptInputs:
     "":
-      coinSound: !<reference.AudioComponent> df8f84fc-635c-4ef1-8646-a8881e30251c
-      hitSound: !<reference.AudioComponent> ac01eca9-f17c-44d0-8d3b-516d2cbfebd6
-      jumpSound: !<reference.AudioComponent> efa5ff0e-0288-44ec-8f4c-0270ac900e27
-      slideSound: !<reference.AudioComponent> 89ec1e1f-edd2-4ddf-8675-6de9a102870f
-      laneSound: !<reference.AudioComponent> 1d77a90a-85c5-4ad5-a995-266dc657bdcd
+      {}
   ScriptTypes:
     "":
       {}
